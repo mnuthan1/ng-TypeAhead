@@ -1,0 +1,10 @@
+<input type="text" ng-model="model" placeholder="{{typeaheaddetails.options.prompt}}" ng-keydown="selected=false"/>
+<br/>
+ 
+<div class="menu-model" ng-hide="!model.length || selected">
+  <div class="menu-item" ng-repeat="item in items | match:model  track by $index" ng-click="handleSelection(item)" style="cursor:pointer" ng-class="{active:isCurrent($index)}" ng-mouseenter="setCurrent($index)">
+    <!--  call sub directive to render each item -->
+    <div item="{{item}}" ></div>
+    
+  </div>
+</div>
