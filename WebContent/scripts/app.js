@@ -19,6 +19,9 @@
 			  url:"./data/user.json",
 			  minLength:"3",
 			  prompt : "Search",
+			  cachedRequests :function(oldValue,newValue) {
+				return newValue.startsWith(oldValue);  
+			  },
 			  highlighter : function(obj) {
 				  var item = JSON.parse(obj);
 					return "<div  class='title'>"+item.name.fullName + " </div>"
@@ -28,12 +31,12 @@
 							+ item.organizations[0].name + ")" + "</div>";
 				},
 				
-				matcher : function(obj) {
+				matcher : function(obj,query) {
 					//var item = JSON.parse(obj);
 					//item = obj;
-					//console.log(item);
-					return ~obj.name.fullName.toLowerCase().indexOf(
-							this.query.toLowerCase())
+					
+					return obj.name.fullName.toLowerCase().indexOf(
+							query.toLowerCase()) >=0
 				},
 				onselect : function(obj) {
 					

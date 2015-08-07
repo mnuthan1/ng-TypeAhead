@@ -28,6 +28,7 @@ angular.module('typeahead')
                 scope.$watch('model', function (val) {
                 	var old = elem.data('old-value');
                 	var min = scope.typeaheaddetails.options.minLength;
+                	var cachedRequests = scope.typeaheaddetails.options.cachedRequests;
                 	//console.log(scope.typeaheaddetails.options);
                 	elem.data('old-value',val);
                 	
@@ -38,9 +39,15 @@ angular.module('typeahead')
            
                     if(val && val.length >= min) // if there is an element in the text field
                     {
-                    	dataFactory.getTypeAhead(scope.typeaheaddetails.options.url).then(function(data) {
-                		    scope.items = data;
-              		  	});
+                    	// check cachedrequest fuction in order to avoid duplicate calls
+                    	if(!(cachedRequests && cachedRequests(old,val)) || old.length<min )
+                    	{
+	                    	dataFactory.getTypeAhead(scope.typeaheaddetails.options.url,{'query':val}).then(function(data) {
+	                		    scope.items = data;
+	              		  	});
+                    	}
+                    } else {
+                    	scope.items = []
                     }
                     
                 });
