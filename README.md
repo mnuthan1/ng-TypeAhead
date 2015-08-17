@@ -66,5 +66,7 @@ $scope.typeaheadData.options = {
 <div class="Typecontainer" ng-controller="appController as appCtrl">
   <typeahead  data = "typeaheadData" />
 </div>
-
 ```
+
+
+
