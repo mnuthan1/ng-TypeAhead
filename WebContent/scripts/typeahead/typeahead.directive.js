@@ -17,6 +17,7 @@ angular.module('typeahead')
 	               return $scope.typeaheaddetails;
 	            }
 	         }],
+	         
 		    link: function(scope, elem, attrs) {
 		    	
 		    	//console.log(scope);
@@ -32,12 +33,12 @@ angular.module('typeahead')
                 	//console.log(scope.typeaheaddetails.options);
                 	elem.data('old-value',val);
                 	
-                    // TODO -- Add min number of chars 
+                 
                     
                     // set default min to 0
                     min = min || 0;
-           
-                    if(val && val.length >= min) // if there is an element in the text field
+                    
+                    if(val && val.length >= min ) // if there is an element in the text field
                     {
                     	// check cachedrequest fuction in order to avoid duplicate calls
                     	if(!(cachedRequests && cachedRequests(old,val)) || old.length<min )
@@ -53,12 +54,10 @@ angular.module('typeahead')
                 });
     
 		    	scope.handleSelection = function(selectedItem) {
-		    		console.log(selectedItem);
-		    	    scope.model = selectedItem;
-		    	    scope.current = 0;
+		    		scope.current = 0;
 		    	    scope.selected = true;
 		    	    //$timeout(function() {
-		    	      scope.onSelect();
+		    	    scope.model = scope.typeaheaddetails.options.onselect(selectedItem);
 		    	   // }, 200);
 		    	  };
 		    	  scope.current = 0;

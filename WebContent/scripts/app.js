@@ -34,20 +34,14 @@
 				matcher : function(obj,query) {
 					//var item = JSON.parse(obj);
 					//item = obj;
-					
-					return obj.name.fullName.toLowerCase().indexOf(
-							query.toLowerCase()) >=0
+					console.log(query)
+					return (obj.name.fullName.toLowerCase().indexOf(query.toLowerCase()) !== -1)
 				},
 				onselect : function(obj) {
-					
-					return ~obj.name.fullName.toLowerCase().indexOf(
-							this.query.toLowerCase())
+					return obj.name.fullName;
 				}
 	  }
 	  
-	 // url="./data/user.json" min="3" items="items" prompt="Start typing here"  render='{"title":"name.givenName","subtitle":"name.FamilyName"}'  model="name" 
-		  
-	 console.log( $scope.typeaheadData.options)
 	  
   }]);
 })();
