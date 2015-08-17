@@ -61,3 +61,9 @@ $scope.typeaheadData.options = {
 				}
 	  }
 	```
+* Use the data directive and specify a json object with a data property referencing your scope.typeaheadData property.
+```
+<div class="Typecontainer" ng-controller="appController as appCtrl">
+  <typeahead  data = "typeaheadData" />
+</div>
+```
