@@ -47,11 +47,7 @@ $scope.typeaheadData.options = {
 			  },
 			  highlighter : function(obj) {
 				  var item = JSON.parse(obj);
-					return "<div  class='title'>"+item.name.fullName + " </div>"
-							+  "<div class ='subtitle'>" + item.primaryEmail + " ("
-							+ item.addresses[0].locality + ") <br>"
-							+ item.organizations[0].title + " ("
-							+ item.organizations[0].name + ")" + "</div>";
+					return "<div  class='title'>"+item.name.fullName + " </div>";
 				},
 				
 				matcher : function(obj,query) {
