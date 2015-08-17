@@ -4,7 +4,7 @@ Angular module for TypeAhead functionality
 
 #Introduction
 ng-TypeAhead, is a 100% angular module written with no dependencies other than AngularJS. 
-<br/> *with this module, you get:
+<br/> _with_this_module,_you_get:
 
 * Easy to use Type Ahead features using angular directives<br/>
 * Caches results to avoid multiple Ajax call ( user can define their own caching function to decide when to do Ajax call)<br/>
